@@ -78,11 +78,11 @@ class Client implements UserInterface, \Serializable
      */
     protected $ended;
 
-//    /**
-//     * @ORM\Column(name="key_", type="string", length=255, nullable=true)
-//     */
-//    protected $key;
-//
+    /**
+     * @ORM\Column(name="key_", type="string", length=255, nullable=true)
+     */
+    protected $key;
+
     /**
      * @var \DateTime()
      *
@@ -407,29 +407,29 @@ class Client implements UserInterface, \Serializable
         return $this->tariff;
     }
 
-//    /**
-//     * Set key
-//     *
-//     * @param string $key
-//     * @return Client
-//     */
-//    public function setKey($key)
-//    {
-//        $this->key = $key;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get key
-//     *
-//     * @return string
-//     */
-//    public function getKey()
-//    {
-//        return $this->key;
-//    }
-//
+    /**
+     * Set key
+     *
+     * @param string $key
+     * @return Client
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
+
+        return $this;
+    }
+
+    /**
+     * Get key
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->key;
+    }
+
     /**
      * Set keyDate
      *
