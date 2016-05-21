@@ -25,12 +25,12 @@ class Client implements UserInterface, \Serializable
     protected $username;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=512)
      */
     protected $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=512)
      */
     protected $salt;
 
