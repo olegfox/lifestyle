@@ -1,0 +1,31 @@
+{% from 'SiteMainBundle:Frontend/Questions:macros.html.twig' import list %}
+
+<div class="close"></div>
+{{ list(questions) }}
+<button class="ask-question">{{ 'frontend.question_form.button_question'|trans({}, 'menu') }}</button>
+<div class="question-form">
+    <div class="form">
+        <div class="flash-notice">
+        </div>
+
+        {{ form_start(form, {'action': url('frontend_questions_index'), 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
+        <div class="top">
+            <div class="wrap-left">
+                <div class="left">
+                    {{ form_widget(form.name) }}
+                </div>
+            </div>
+            <div class="wrap-right">
+                <div class="right">
+                    {{ form_widget(form.email) }}
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            {{ form_widget(form.question) }}
+        </div>
+
+        <button type="submit" class="btn">{{ 'frontend.question_form.button_question_send'|trans({}, 'menu') }}</button>
+        {{ form_rest(form) }}
+    </div>
+</div>

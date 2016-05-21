@@ -1,0 +1,30 @@
+backend_questions_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Questions:index" }
+
+backend_questions_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Questions:show" }
+
+backend_questions_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Questions:new" }
+
+backend_questions_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Questions:create" }
+    requirements: { _method: post }
+
+backend_questions_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Questions:edit" }
+
+backend_questions_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Questions:update" }
+    requirements: { _method: post|put }
+
+backend_questions_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Questions:delete" }
+    requirements: { _method: post|delete }

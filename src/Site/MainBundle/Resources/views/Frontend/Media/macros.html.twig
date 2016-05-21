@@ -1,0 +1,117 @@
+{% macro grid(media) %}
+    {% for m in media %}
+        {% set link = path('frontend_media_one', {slug: m.slug}) %}
+        <div class="media-one{% if loop.last %} last{% endif %}" id="media{{ m.id }}">
+            <h1><a href="{{ link }}">{{ m.title }}</a></h1>
+            {% if m.photos|length > 0 %}
+                <div class="gallery">
+                    {% for p in m.photos %}
+                        {% if loop.index == 1 %}
+                            <img src="{{ image(p.link).cropResize(1164) }}"/>
+                            <a href="{{ asset(p.link) }}" class="play" rel="group{{ m.id }}">
+                                <img src="{{ asset('bundles/sitemain/frontend/images/gallery-open.png') }}"
+                                     width="269px" height="91px"
+                                     alt=""/>
+                            </a>
+                        {% else %}
+                            <a href="{{ asset(p.link) }}" class="hide" rel="group{{ m.id }}"></a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if m.video.id is defined %}
+                <div class="video">
+                    <a href="#" onclick="videoClick(this, '{{ m.video.html|url_encode }}');">
+                        <img src="{{ asset('bundles/sitemain/frontend/images/play.png?v1') }}" />
+                    </a>
+                    <img src="{{ image(m.video.getPreviewImageUrl()).zoomCrop(720, 439) }}" alt="{{ m.video.title }}"/>
+                    <div class="background"></div>
+                </div>
+            {% endif %}
+            <div class="text">
+                {{ m.genPreview|raw }}
+                {% if m.genPreview|length < m.text|length %}
+                    <a href="{{ link }}" class="readmore"
+                       onclick="if(event.which == 1){ readMore({{ m.getId() }}, '{{ path('frontend_media_content') }}'); return false; } else return true;">
+                        Читать дальше
+                    </a>
+                {% endif %}
+            </div>
+            <div class="social_buttons">
+                <script type="text/javascript">(function () {
+                        if (window.pluso)if (typeof window.pluso.start == "function") return;
+                        if (window.ifpluso == undefined) {
+                            window.ifpluso = 1;
+                            var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                            s.type = 'text/javascript';
+                            s.charset = 'UTF-8';
+                            s.async = true;
+                            s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
+                            var h = d[g]('body')[0];
+                            h.appendChild(s);
+                        }
+                    })();</script>
+                <div class="pluso" data-background="transparent"
+                     data-options="big,square,line,horizontal,nocounter,theme=04"
+                     data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir" data-url="http://{{ app.request.host }}{{ link }}"></div>
+            </div>
+        </div>
+        {% if loop.last == false %}
+            <hr/>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
+
+{% macro one(m) %}
+    {% set link = path('frontend_media_one', {slug: m.slug}) %}
+    <div class="media-one" id="media{{ m.id }}">
+        <h1><a href="{{ link }}">{{ m.title }}</a></h1>
+        {% if m.photos|length > 0 %}
+            <div class="gallery">
+                {% for p in m.photos %}
+                    {% if loop.index == 1 %}
+                        <img src="{{ image(p.link).cropResize(1164) }}"/>
+                        <a href="{{ asset(p.link) }}" class="play" rel="group{{ m.id }}">
+                            <img src="{{ asset('bundles/sitemain/frontend/images/gallery-open.png') }}"
+                                 width="269px" height="91px"
+                                 alt=""/>
+                        </a>
+                    {% else %}
+                        <a href="{{ asset(p.link) }}" class="hide" rel="group{{ m.id }}"></a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if m.video.id is defined %}
+            <div class="video">
+                <a href="#" onclick="videoClick(this, '{{ m.video.html|url_encode }}');">
+                    <img src="{{ asset('bundles/sitemain/frontend/images/play.png?v1') }}" />
+                </a>
+                <img src="{{ image(m.video.getPreviewImageUrl()).zoomCrop(720, 439) }}" alt="{{ m.video.title }}"/>
+                <div class="background"></div>
+            </div>
+        {% endif %}
+        <div class="text">
+            {{ m.text|raw }}
+        </div>
+        <div class="social_buttons">
+            <script type="text/javascript">(function () {
+                    if (window.pluso)if (typeof window.pluso.start == "function") return;
+                    if (window.ifpluso == undefined) {
+                        window.ifpluso = 1;
+                        var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                        s.type = 'text/javascript';
+                        s.charset = 'UTF-8';
+                        s.async = true;
+                        s.src = ('https:' == window.location.protocol ? 'https' : 'http') + '://share.pluso.ru/pluso-like.js';
+                        var h = d[g]('body')[0];
+                        h.appendChild(s);
+                    }
+                })();</script>
+            <div class="pluso" data-background="transparent"
+                 data-options="big,square,line,horizontal,nocounter,theme=04"
+                 data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir" data-url="http://{{ app.request.host }}{{ link }}"></div>
+        </div>
+    </div>
+    <hr/>
+{% endmacro %}

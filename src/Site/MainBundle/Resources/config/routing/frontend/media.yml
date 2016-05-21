@@ -1,0 +1,15 @@
+frontend_media_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Media:index" }
+
+frontend_media_one:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Media:one" }
+
+frontend_media_content:
+    pattern:  /ajax/media_content
+    defaults: { _controller: "SiteMainBundle:Frontend/Media:getContent" }
+
+frontend_media_ajax:
+    path:     /ajax/{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Media:ajax" }

@@ -1,0 +1,31 @@
+{% extends 'SiteMainBundle:Frontend/Auth:dialog.html.twig' %}
+
+{% block id %}login-dialog{% endblock %}
+
+{% block head %}Авторизация{% endblock %}
+
+
+{% block content %}
+    <div class="wrap-form">
+        <form action=""></form>
+        <div class="form form-login">
+            <form action="{{ path('frontend_client_login_check') }}" method="post" class="form-horizontal" data-redirect="{{ path('frontend_client_room') }}">
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        <input type="text" id="username" name="_username" placeholder="email" value="{{ last_username }}" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        <input type="password" id="password" name="_password" placeholder="пароль" />
+                    </div>
+                </div>
+
+                <a href="{{ path('frontend_client_forget_password') }}" class="forget_password" data-dialog="forget-password-dialog" onclick="return false;">Забыли пароль?</a>
+
+                <button type="submit" class="btn">ВХОД</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

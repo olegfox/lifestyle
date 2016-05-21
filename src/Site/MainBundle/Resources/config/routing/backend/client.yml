@@ -1,0 +1,30 @@
+backend_client_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Client:index" }
+
+backend_client_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Client:show" }
+
+backend_client_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Client:new" }
+
+backend_client_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Client:create" }
+    methods:  POST
+
+backend_client_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Client:edit" }
+
+backend_client_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Client:update" }
+    methods:  [POST, PUT]
+
+backend_client_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Client:delete" }
+    methods:  [POST, DELETE]

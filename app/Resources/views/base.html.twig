@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=1000, user-scalable=yes">
+        <title>{% block title %}lifestyle-manager.ru{% endblock %}</title>
+        <meta name="Description" content="{% block meta_description %}{% endblock %}">
+        <meta name="Keywords" content="{% block meta_keywords %}{% endblock %}">
+        <meta property="og:title" content="{% block og_title %}{% endblock %}"/>
+        <meta property="og:description" content="{% block og_description %}{% endblock %}"/>
+        <meta property="og:image" content="{% block og_image %}{% endblock %}"/>
+        <meta property="og:url" content="{% block og_url %}{% endblock %}" />
+        <meta property="og:type" content="article">
+        <meta property="og:locale" content="ru_RU">
+        <meta property="og:site_name" content="Шарж и перо" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter31879541 = new Ya.Metrika({
+                        id:31879541,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true,
+                        webvisor:true
+                    });
+                } catch(e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/31879541" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=mSFy9bJtC7lQY6wT3H0fNU8BdPQAEumRvOLPjH2h4GxOGVMCThzrClr1fZtzHJ2jELmtWk/1QgnCEIiu2MyrrELSMzi3bHAi6uQ6yV9vh3nLVCBmkn1f6zsiwDSyXiJ*8SyN6HC3T**DuE3moo2fTOMltM/MpZ9xDNKUPEphYTk-';</script>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

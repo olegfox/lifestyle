@@ -1,0 +1,15 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block title %}{{ page.metaTitle }}{% endblock %}
+{% block meta_description %}{{ page.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ page.metaKeywords }}{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <div class="content">
+            <div class="inner-content">
+                {{ page.text|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

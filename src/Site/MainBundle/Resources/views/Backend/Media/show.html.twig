@@ -1,0 +1,64 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.media.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.media.title'|trans({}, 'menu') }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.media.created'|trans({}, 'menu') }}</th>
+            <td>{{ entity.created|date('d.m.Y') }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.media.description'|trans({}, 'menu') }}</th>
+            <td>{{ entity.description }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.media.metaTitle'|trans({}, 'menu') }}</th>
+            <td>{{ entity.metaTitle }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.media.metaDescription'|trans({}, 'menu') }}</th>
+            <td>{{ entity.metaDescription }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.media.metaKeywords'|trans({}, 'menu') }}</th>
+            <td>{{ entity.metakeywords }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.media.photos'|trans({}, 'menu') }}</th>
+            <td>
+                <div class="galery">
+                    {% for photo in entity.photos %}
+                        <a href="{{ asset(photo.link) }}" target="_blank"><img src="{{ image(photo.link).zoomCrop(50, 50) }}" alt="{{ image(photo.link).zoomCrop(50, 50) }}"/></a>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_media_index') }}">
+                {{ 'backend.media.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_media_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_media_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

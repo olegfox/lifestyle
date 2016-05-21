@@ -1,0 +1,7 @@
+<div id="{% block id %}{% endblock %}" class="dialog {% block class %}{% endblock %}">
+    <div class="dialog__overlay"></div>
+    <div class="dialog__content">
+        <h2>{% block head %}{% endblock %}</h2>
+        {% block content %}{% endblock %}
+    </div>
+</div>

@@ -1,0 +1,26 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/sitemain/backend/js/uploadify/uploadify.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content -%}
+    <h1>{{ 'backend.media.h1_create'|trans({}, 'menu') }}</h1>
+
+    {{ form(form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_media_index') }}">
+                {{ 'backend.media.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/uploadify/jquery.uploadify.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/backend/js/init_uploadify.js') }}"></script>
+{% endblock %}

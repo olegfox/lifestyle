@@ -1,0 +1,23 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block content %}
+<div class="feedback-form">
+    <form action=""></form>
+    <div class="form">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="flash-notice">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        <h1>Обратная связь</h1>
+        {{ form_start(form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
+        {{ form_row(form.name, {'attr': {'class' : 'form-control2'} }) }}
+        {{ form_row(form.phone) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.theme) }}
+        {{ form_row(form.message) }}
+        <button type="submit" class="btn">Отправить</button>
+        {{ form_rest(form) }}
+    </div>
+</div>
+{% endblock %}

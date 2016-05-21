@@ -1,0 +1,305 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/start.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    {# VIDEO #}
+    <div class="wrap-video">
+        <div id="videocontrol"><a id="play-pause" class="play"><img src="{{ asset('bundles/sitemain/frontend/images/play.png') }}"/></a></div>
+        <div class="video">
+            <div class="wrap-slider">
+                <div class="slider">
+                    {% for background in backgrounds %}
+                        <div style="background: url('{{ image('uploads/background/'~background.img).zoomCrop(1920, 1080) }}') center center no-repeat; background-size: cover;"><div style="display: inline-block; width: 1920px; height: 1080px;"></div></div>
+                    {% endfor %}
+                </div>
+            </div>
+            <video id="video" src="{{ asset('bundles/sitemain/frontend/video/video.mp4') }}" loop="true" autoplay="autoplay" muted="muted" poster="{{ asset('bundles/sitemain/frontend/images/poster.jpg') }}"></video>
+            <div class="gradient"></div>
+        </div>
+        <div class="logo">
+            <h1>LIFESTYLE-MANAGER.RU</h1>
+            <h2>мы меняем жизни людей</h2>
+        </div>
+        <a href="#main"><i class="icon arrow"></i></a>
+    </div>
+    {# END VIDEO #}
+
+    <!--BEGIN MAIN -->
+    <main class="main" id="main">
+
+        <!--reasons-->
+        <section class="reasons_block">
+            <div class="inner">
+                <div class="reasons_block_item item_1">
+                    <div class="reasons_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                        <picture>
+                            <source
+                                    media="(min-width:1200px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/reason_image_wide_1.jpg') }}">
+                            <source
+                                    media="(max-width:1199px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/reason_image_1.jpg') }}">
+
+                            <img src="{{ asset('bundles/sitemain/frontend/images/reason_image_1.jpg') }}" alt=""/>
+                        </picture>
+                    </div>
+                    <h3 class="wow fadeIn" data-wow-duration="2s">жизнь не приносит
+                        <br/>удовольствия?
+                    </h3>
+                </div>
+                <div class="reasons_block_item item_2">
+                    <div class="reasons_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                        <picture>
+                            <source
+                                    media="(min-width:1200px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/reason_image_wide_2.jpg') }}">
+                            <source
+                                    media="(max-width:1199px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/reason_image_2.jpg') }}">
+
+                            <img src="{{ asset('bundles/sitemain/frontend/images/reason_image_2.jpg') }}" alt=""/>
+                        </picture>
+                    </div>
+                    <h3 class="wow fadeIn" data-wow-duration="1s">ничего не
+                        <br/>получается?
+                    </h3>
+                </div>
+                <div class="reasons_block_item item_3">
+                    <div class="reasons_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                        <picture>
+                            <source
+                                    media="(min-width:1200px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/reason_image_wide_3.jpg') }}">
+                            <source
+                                    media="(max-width:1199px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/reason_image_3.jpg') }}">
+
+                            <img src="{{ asset('bundles/sitemain/frontend/images/reason_image_3.jpg') }}" alt=""/>
+                        </picture>
+                    </div>
+                    <h3 class="wow fadeIn" data-wow-duration="1s">бегаете
+                        <br/>по кругу?
+                    </h3>
+                </div>
+            </div>
+        </section>
+        <!-- end of reasons-->
+
+        <!--proposal-->
+        <section class="proposal_block">
+            <div class="wrap"><h1><span>мы предлагаем простое решение</span></h1></div>
+            <h1><span class="wow bounceInLeft" data-wow-duration="2s">мы предлагаем простое решение</span></h1>
+            <div class="wrap-inner">
+                <div class="inner wow fadeIn" data-wow-duration="2s">
+                    <p>Персональный life-style-manager будет давать задания, подобранные специально для Вас, чтобы изменить вашу жизнь к лучшему и открыть в Вас качества и таланты, о которых вы даже не догадывались. </p>
+                </div>
+            </div>
+        </section>
+        <!-- end of proposal-->
+
+        <!--benefits-->
+        <section class="benefits_block">
+            <div class="wrap">
+                <div class="inner">
+                    <h2>Преимущества данного решения</h2>
+                    <ol>
+                        <li>Задачи подбираются персонально для вас.</li>
+                        <li>Развитие происходит в различных направлениях.</li>
+                        <li>Вы выполняете только те задачи, которые сами согласитесь выполнить.</li>
+                        <li>Эффект данной методики вы почувствуете, как только начнете выполнять задания.</li>
+                        <li>Вам не нужно ничего читать и изучать. Вы просто говорите о своих проблемах, а менеджер подбирает для вас подходящую программу с индивидуальной корректировкой под вас.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="inner wow fadeIn" data-wow-duration="2s">
+                <h2>Преимущества данного решения</h2>
+                <ol>
+                    <li>Задачи подбираются персонально для вас.</li>
+                    <li>Развитие происходит в различных направлениях.</li>
+                    <li>Вы выполняете только те задачи, которые сами согласитесь выполнить.</li>
+                    <li>Эффект данной методики вы почувствуете, как только начнете выполнять задания.</li>
+                    <li>Вам не нужно ничего читать и изучать. Вы просто говорите о своих проблемах, а менеджер подбирает для вас подходящую программу с индивидуальной корректировкой под вас.</li>
+                </ol>
+            </div>
+        </section>
+        <!-- end of benefits-->
+
+        <!--terms-->
+        <section class="terms_block">
+            <div class="inner wow fadeIn" data-wow-duration="2s">
+                <h2>условия сотрудничества</h2>
+                <ol>
+                    <li>Мы не психологическая помощь. Клиент должен быть настроен дейстовать и получать результат. Мы звоним Вам не поговорить, а выявить проблему и предложить решение.</li>
+                    <li>На каждый разговор, кроме ознакомительного, отведено определенное время. Это очень важно. Многие люди не хотят решать свои проблемы. Им просто нужно выговориться. Это не к нам. Мы готовы с Вами общаться, но цель - решение проблем, улучшение жизни.</li>
+                    <li>Ответственность за Вашу жизнь и за Вас лежит только на Ваших плечах. Мы предлагаем решения, Выбор за Вами. Ваше будущее в Ваших руках.</li>
+                </ol>
+            </div>
+        </section>
+        <!-- end of terms-->
+
+        <!--structure-->
+        <section class="structure_block">
+            <div class="wrap">
+                <h2>структура работы</h2>
+                <div class="inner">
+                    <div class="structure_block_item item_1">
+                        <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                            <picture>
+                                <source
+                                        media="(min-width:1200px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_1.png') }}">
+                                <source
+                                        media="(max-width:1199px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_1.png') }}">
+
+                                <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_1.png') }}" alt=""/>
+                            </picture>
+                        </div>
+                        <h3 class="wow fadeIn" data-wow-duration="2s">выбираете тариф</h3>
+                    </div>
+                    <div class="structure_block_item item_2">
+                        <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                            <picture>
+                                <source
+                                        media="(min-width:1200px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_2.png') }}">
+                                <source
+                                        media="(max-width:1199px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_2.png') }}">
+
+                                <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_2.png') }}" alt=""/>
+                            </picture>
+                        </div>
+                        <h3 class="wow fadeIn" data-wow-duration="2s">производите оплату</h3>
+                    </div>
+                    <div class="structure_block_item item_3">
+                        <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                            <picture>
+                                <source
+                                        media="(min-width:1200px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_3.png') }}">
+                                <source
+                                        media="(max-width:1199px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_3.png') }}">
+
+                                <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_3.png') }}" alt=""/>
+                            </picture>
+                        </div>
+                        <h3 class="wow fadeIn" data-wow-duration="2s">заполняете анкету</h3>
+                    </div>
+                    <div class="structure_block_item item_4">
+                        <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                            <picture>
+                                <source
+                                        media="(min-width:1200px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_4.png') }}">
+                                <source
+                                        media="(max-width:1199px)"
+                                        srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_4.png') }}">
+
+                                <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_4.png') }}" alt=""/>
+                            </picture>
+                        </div>
+                        <h3 class="wow fadeIn" data-wow-duration="2s">ждёте звонка</h3>
+                    </div>
+                </div>
+            </div>
+            <h2>структура работы</h2>
+            <div class="inner">
+                <div class="structure_block_item item_1">
+                    <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                        <picture>
+                            <source
+                                    media="(min-width:1200px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_1.png') }}">
+                            <source
+                                    media="(max-width:1199px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_1.png') }}">
+
+                            <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_1.png') }}" alt=""/>
+                        </picture>
+                    </div>
+                    <h3 class="wow fadeIn" data-wow-duration="2s">выбираете тариф</h3>
+                </div>
+                <div class="structure_block_item item_2">
+                    <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                        <picture>
+                            <source
+                                    media="(min-width:1200px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_2.png') }}">
+                            <source
+                                    media="(max-width:1199px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_2.png') }}">
+
+                            <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_2.png') }}" alt=""/>
+                        </picture>
+                    </div>
+                    <h3 class="wow fadeIn" data-wow-duration="2s">производите оплату</h3>
+                </div>
+                <div class="structure_block_item item_3">
+                    <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                        <picture>
+                            <source
+                                    media="(min-width:1200px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_3.png') }}">
+                            <source
+                                    media="(max-width:1199px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_3.png') }}">
+
+                            <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_3.png') }}" alt=""/>
+                        </picture>
+                    </div>
+                    <h3 class="wow fadeIn" data-wow-duration="2s">заполняете анкету</h3>
+                </div>
+                <div class="structure_block_item item_4">
+                    <div class="structure_block_item_image wow zoomIn" data-wow-duration="0.5s">
+                        <picture>
+                            <source
+                                    media="(min-width:1200px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_wide_4.png') }}">
+                            <source
+                                    media="(max-width:1199px)"
+                                    srcset="{{ asset('bundles/sitemain/frontend/images/structure_image_4.png') }}">
+
+                            <img src="{{ asset('bundles/sitemain/frontend/images/structure_image_4.png') }}" alt=""/>
+                        </picture>
+                    </div>
+                    <h3 class="wow fadeIn" data-wow-duration="2s">ждёте звонка</h3>
+                </div>
+            </div>
+        </section>
+        <!-- end of structure-->
+
+        <!--tariffs-->
+        <section class="tariffs_block">
+            <div class="inner">
+                <h2>тарифы</h2>
+                {% for tariff in tariffs %}
+                <div class="teriffs_block_item wow zoomInDown">
+                    <h3>{{ tariff.name }}</h3>
+                    {{ tariff.description|raw }}
+                    {% if tariff.disable %}
+                        <div class="developing">в разработке</div>
+                    {% else %}
+                        <a href="{% if app.security.token is not null and is_granted('ROLE_USER') %}{{ path('frontend_client_payment') }}{% else %}{{ path('frontend_client_register') }}{% endif %}" class="order_btn">КУПИТЬ</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <!-- end of tariffs-->
+
+    </main>
+    <!--end of MAIN -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sitemain/frontend/js/slick.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/start.js') }}"></script>
+{% endblock %}

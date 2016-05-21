@@ -1,0 +1,30 @@
+backend_background_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Background:index" }
+
+backend_background_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Background:show" }
+
+backend_background_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Background:new" }
+
+backend_background_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Background:create" }
+    methods:  POST
+
+backend_background_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Background:edit" }
+
+backend_background_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Background:update" }
+    methods:  [POST, PUT]
+
+backend_background_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Background:delete" }
+    methods:  [POST, DELETE]

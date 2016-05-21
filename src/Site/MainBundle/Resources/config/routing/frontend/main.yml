@@ -1,0 +1,31 @@
+frontend_homepage:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Main:index" }
+
+frontend_client:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/auth.yml"
+    prefix:   /client
+
+frontend_media:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/media.yml"
+    prefix: /miedia
+
+frontend_feedback:
+    path:     /feedback
+    defaults: { _controller: "SiteMainBundle:Frontend/Feedback:index" }
+
+frontend_questions:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/questions.yml"
+    prefix: /questions
+
+frontend_agent:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/agent.yml"
+    prefix: /agent
+
+frontend_client_payment_notification:
+    path:     /payment/notification
+    defaults: { _controller: "SiteMainBundle:Frontend/Payment:notification" }
+    methods:  POST
+
+frontend_page:
+    resource: "@SiteMainBundle/Resources/config/routing/frontend/page.yml"

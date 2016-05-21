@@ -1,0 +1,50 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% from 'SiteMainBundle:Frontend/Media:macros.html.twig' import grid %}
+{% from 'SiteMainBundle:Frontend/Media:macros.html.twig' import one %}
+
+{% block title %}{{ media.metaTitle }}{% endblock %}
+{% block meta_description %}{{ media.metaDescription }}{% endblock %}
+{% block meta_keywords %}{{ media.metaKeywords }}{% endblock %}
+{% block og_title %}{{ media.metaTitle }}{% endblock %}
+{% block og_description %}{{ media.metaDescription }}{% endblock %}
+{#{% block og_image %}http://{{ app.request.host }}{{ image(photo.webPath).zoomCrop(300, 300).jpeg(100) }}{% endblock %}#}
+{% block og_url %}http://{{ app.request.host }}{{ app.request.requestUri }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/sitemain/frontend/js/photoswipe/photoswipe.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="wrap_content">
+        <div class="content">
+            <div class="media" id="{{ media.slug }}">
+                {{ one(media) }}
+                {{ grid(allMedia) }}
+                {% if mediaLength == 15 %}
+                    <a class="indexByTaxonAjax" href="{{ path('frontend_media_ajax', {slug: lastSlug}) }}"></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sitemain/frontend/js/photoswipe/lib/simple-inheritance.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/photoswipe/code-photoswipe-1.0.11.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/videoClick.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/sitemain/frontend/js/ajax.media.js') }}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".gallery").each(function (i, e) {
+                $(e).unbind('click').click(function () {
+                    Code.photoSwipe('a', this);
+                    Code.PhotoSwipe.Current.show(0);
+                    return false;
+                });
+            });
+        });
+    </script>
+{% endblock %}

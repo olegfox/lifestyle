@@ -1,0 +1,61 @@
+# you can read more about security in the related section of the documentation
+# http://symfony.com/doc/current/book/security.html
+security:
+    # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+        Site\MainBundle\Entity\Client: sha512
+
+    # http://symfony.com/doc/current/book/security.html#hierarchical-roles
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+        site_mainbundle:
+            entity:
+                class: SiteMainBundle:Client
+                property: username
+
+    # the main part of the security, where you can set up firewalls
+    # for specific sections of your app
+    firewalls:
+        admin:
+            pattern:            /admin(.*)
+            form_login:
+                provider:       fos_userbundle
+                login_path:     /admin/login
+                check_path:     /admin/login_check
+                default_target_path: /admin/
+            logout:
+                path:           /admin/logout
+                target:         /admin/login
+            anonymous:    true
+        default:
+            pattern:    /(.*)
+            anonymous: true
+            provider:    site_mainbundle
+            http_basic: ~
+            form_login:
+                login_path:  /client/login
+                check_path:  /client/login_check
+                always_use_default_target_path: true
+                default_target_path: /client/room
+                username_parameter: _username
+            logout:
+                path: /client/logout
+
+    # with these settings you can restrict or allow access for different parts
+    # of your application based on roles, ip, host or methods
+    # http://symfony.com/doc/current/cookbook/security/access_control.html
+    access_control:
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/client/room, role: ROLE_USER }
+        - { path: ^/client/payment, role: ROLE_USER }
+        - { path: ^/client/payment/completed, role: ROLE_USER }

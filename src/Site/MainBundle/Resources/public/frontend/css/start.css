@@ -1,0 +1,67 @@
+.st-container{
+    display: none;
+}
+header{
+    position: fixed;
+}
+header.show{
+    background: rgba(238, 241, 242, 1);
+}
+
+header.no-show{
+    display: none;
+}
+
+header.no-show hr{
+    display: block;
+    background: #fff;
+    opacity: .36;
+    width: 100%;
+    height: 1px;
+    border: 0;
+    margin-bottom: 0;
+}
+
+header.no-show .header_logo a{
+    color: #fff;
+}
+
+header.no-show .header_logo a:hover{
+    color: #fff;
+    text-decoration: none;
+}
+
+header.no-show .nav li a{
+    color: #fff;
+}
+
+header.no-show .nav li a:hover{
+    color: #fff;
+}
+
+.gradient{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/bundles/sitemain/frontend/images/gradient.png') 0 0 no-repeat;
+    background-size: cover;
+}
+
+#videocontrol{
+    display: none;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 200px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.wrap-slider{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}

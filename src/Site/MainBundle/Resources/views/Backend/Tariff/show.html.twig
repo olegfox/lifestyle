@@ -1,0 +1,50 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.tariff.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+            <tr>
+                <th>{{ 'backend.tariff.name'|trans({}, 'menu') }}</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'backend.tariff.description1'|trans({}, 'menu') }}</th>
+                <td>{{ entity.description1 }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'backend.tariff.description2'|trans({}, 'menu') }}</th>
+                <td>{{ entity.description2 }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'backend.tariff.price'|trans({}, 'menu') }}</th>
+                <td>{{ entity.price }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'backend.tariff.disable'|trans({}, 'menu') }}</th>
+                <td>{{ entity.disable ? 'Да' : 'Нет' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_tariff_index') }}">
+                {{ 'backend.tariff.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_tariff_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_tariff_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

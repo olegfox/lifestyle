@@ -1,0 +1,99 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/js/SidebarTransitions/component.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/dialog.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/dialog-sally.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('bundles/sitemain/frontend/css/animate.css') }}"/>
+    <script src="{{ asset('bundles/sitemain/frontend/js/modernizr.custom.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="st-container" class="st-container">
+        <div class="st-pusher">
+            <nav class="st-menu st-menu-menu st-effect-1" id="st-menu-menu">
+                {{ render(url('frontend_questions_index')) }}
+            </nav>
+            <!--BEGIN PAGE HOLDER -->
+            <div class="page_holder">
+                <div class="page_content">
+                <!--BEGIN HEADER-->
+                <header>
+                    <div class="inner">
+                        <div class="header_logo">
+                            <a href="{{ path('frontend_homepage') }}">
+                                LIFESTYLE-MANAGER.RU
+                            </a>
+                        </div>
+                        {% if app.security.token is not null and is_granted('ROLE_USER') %}
+                            <a class="header_btn" href="{{ path('frontend_client_logout') }}">выход</a>
+                            <a class="header_btn second client-room-button" href="{{ path('frontend_client_room') }}">личный кабинет</a>
+                        {% else %}
+                            <a data-dialog="login-dialog" class="header_btn" href="{{ path('frontend_client_login') }}" onclick="return false;">вход</a>
+                        {% endif %}
+                    </div>
+                    <hr/>
+                </header>
+                <!--end of HEADER-->
+                {% block content %}
+                {% endblock %}
+                </div>
+                <!--BEGIN FOOTER-->
+                <footer>
+                    {% if app.request.attributes.get('_route') != 'frontend_client_login' %}
+                        <div class="wrap_answer_question">
+                            <a href="#" data-effect="st-effect-1">Ответы на вопросы</a>
+                        </div>
+                    {% endif %}
+                    <div class="wrap-inner">
+                        <div class="inner">
+                            <div class="footer_social">
+                                <div class="footer_logo">
+                                    <div class="tincoff"></div>
+                                    <div class="mc"></div>
+                                    <div class="visa"></div>
+                                </div>
+                                <div class="pluso" data-background="transparent" data-options="medium,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir"></div>
+                                <div class="info">
+                                    {{ knp_menu_render('SiteMainBundle:FrontendMenuBuilder:mainMenu') }}
+                                    <ul class="nav">
+                                        <li>ООО "Просто делай"</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!--end of FOOTER-->
+            </div>
+            <!-- end of PAGE HOLDER -->
+        </div>
+    </div>
+
+    {% if is_granted('ROLE_USER') %}
+        {{ render(url('frontend_client_payment', {ajax: true})) }}
+    {% else %}
+        {{ render(url('frontend_client_register')) }}
+        {{ render(url('frontend_client_login') ~ '?xhr=true') }}
+        {{ render(url('frontend_client_forget_password')) }}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/sitemain/frontend/js/jquery-1.11.2.min.js') }}"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/picturefill.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/SidebarTransitions/classie.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/SidebarTransitions/sidebarEffects.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/isInViewport.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/wow.min.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/scripts.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/dialogFx.js') }}"></script>
+    <script src="{{ asset('bundles/sitemain/frontend/js/init.dialogFx.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,30 @@
+backend_tariff_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Tariff:index" }
+
+backend_tariff_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Tariff:show" }
+
+backend_tariff_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Tariff:new" }
+
+backend_tariff_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Tariff:create" }
+    methods:  POST
+
+backend_tariff_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Tariff:edit" }
+
+backend_tariff_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Tariff:update" }
+    methods:  [POST, PUT]
+
+backend_tariff_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Tariff:delete" }
+    methods:  [POST, DELETE]

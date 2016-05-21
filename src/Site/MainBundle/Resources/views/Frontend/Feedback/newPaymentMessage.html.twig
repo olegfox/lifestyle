@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Life-style-manager (Новая оплата)</title>
+</head>
+<body style="margin: 0px; width: 700px; font-family: Arial; letter-spacing: 2px;">
+<div class="content">
+    <table class="table" style="border-collapse: collapse;">
+        <tr>
+            <td>{{ 'backend.client.username'|trans({}, 'menu') }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'backend.client.email'|trans({}, 'menu') }}</td>
+            <td>{{ form.email }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'backend.client.phone'|trans({}, 'menu') }}</td>
+            <td>{{ form.phone }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'frontend.payment.tariff'|trans({}, 'menu') }}</td>
+            <td>{{ form.tariff.name }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'frontend.payment.numberMonth'|trans({}, 'menu') }}</td>
+            <td>{{ payment.numberMonth }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'frontend.payment.amount'|trans({}, 'menu') }}</td>
+            <td>{{ payment.amount }} РУБ.</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

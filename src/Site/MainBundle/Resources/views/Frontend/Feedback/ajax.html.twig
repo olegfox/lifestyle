@@ -1,0 +1,23 @@
+{% extends 'SiteMainBundle:Frontend/Auth:dialog.html.twig' %}
+
+{% block id %}feedback-dialog{% endblock %}
+
+{% block head %}Обратная связь{% endblock %}
+
+{% block content %}
+    <div class="wrap-form">
+        <form action=""></form>
+        <div class="form feedback-form">
+            <div class="flash-notice">
+            </div>
+            {{ form_start(form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
+            {{ form_row(form.name, {'attr': {'class' : 'form-control2'} }) }}
+            {{ form_row(form.phone) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.theme) }}
+            {{ form_row(form.message) }}
+            <button type="submit" class="btn">Отправить</button>
+            {{ form_rest(form) }}
+        </div>
+    </div>
+{% endblock %}

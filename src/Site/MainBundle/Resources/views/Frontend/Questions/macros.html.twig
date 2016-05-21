@@ -1,0 +1,13 @@
+{% macro list(questions) %}
+    {% if questions|length > 0 %}
+        <div class="header-questions">ответы на вопросы</div>
+        <div id="accordion">
+            {% for q in questions %}
+                <h3>{{ q.title }}</h3>
+                <div>
+                    {{ q.answer|raw }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}

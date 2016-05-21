@@ -1,0 +1,30 @@
+backend_media_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Media:index" }
+
+backend_media_show:
+    path:     /{id}/show
+    defaults: { _controller: "SiteMainBundle:Backend/Media:show" }
+
+backend_media_new:
+    path:     /new
+    defaults: { _controller: "SiteMainBundle:Backend/Media:new" }
+
+backend_media_create:
+    path:     /create
+    defaults: { _controller: "SiteMainBundle:Backend/Media:create" }
+    methods:  POST
+
+backend_media_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SiteMainBundle:Backend/Media:edit" }
+
+backend_media_update:
+    path:     /{id}/update
+    defaults: { _controller: "SiteMainBundle:Backend/Media:update" }
+    methods:  [POST, PUT]
+
+backend_media_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SiteMainBundle:Backend/Media:delete" }
+    methods:  [POST, DELETE]

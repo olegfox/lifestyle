@@ -1,0 +1,42 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.background.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.background.img'|trans({}, 'menu') }}</th>
+            <td><a href="{{ asset(entity.webPath) }}" target="_blank"><img src="{{ image(entity.webPath).resize(150) }}" alt="{{ image(entity.webPath).resize(150) }}" width="150px"/></a></td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.background.main'|trans({}, 'menu') }}</th>
+            <td>{{ (entity.main ? 'backend.background.main_yes' : 'backend.background.main_no')|trans({}, 'menu') }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_background_index') }}">
+                {{ 'backend.background.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_background_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_background_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

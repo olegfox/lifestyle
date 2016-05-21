@@ -1,0 +1,58 @@
+{% extends 'SiteMainBundle:Frontend:layout.html.twig' %}
+
+{% block content %}
+    <div class="wrap-container wrap-container-room">
+        <div class="container">
+            <h1>Личный кабинет</h1>
+            {#<p>{% if app.user.isPayment %}Оплачено{% else %}Не оплачено{% endif %}</p>#}
+            <div class="top">
+                <p>Тариф: {{ app.user.tariff.name }}</p> {#<a href="{{ path('frontend_client_room_change_tariff') }}">Изменить тариф</a>#}
+                <p>Осталось дней: {{ app.user.daysLeft }}</p>
+                <p>Дата окончания: {% if app.user.ended is null or app.user.ended < date('now') %}-{% else %}{{ app.user.ended|date('d.m.y') }}{% endif %}</p>
+            </div>
+            <div class="bottom">
+                <div class="login"><span>Логин:</span><div>{{ app.user.username }}</div><a href="{{ path('frontend_client_change_password') }}" data-dialog="change-password-dialog" onclick="return false;">Поменять пароль</a></div>
+                <div class="email"><span>Почта:</span><div>{{ app.user.email }}</div><a href="#">Изменить</a></div>
+                <div class="phone"><span>Номер телефона:</span><div>{{ app.user.phone }}</div><a href="#">Изменить</a></div>
+            </div>
+            <div class="buttons">
+                <a href="{{ path('frontend_feedback') }}" class="btn feedback-btn" data-dialog="feedback-dialog" onclick="return false;">Написать письмо</a>
+                <a href="{{ path('frontend_client_payment') }}" class="btn" data-dialog="payment-dialog" onclick="return false;">Купить ещё</a>
+            </div>
+            {#<p>История оплаты</p>#}
+            {#<br/>#}
+            {#<table class="payments-table">#}
+                {#<tr>#}
+                    {#<td>Номер оплаты</td>#}
+                    {#<td>Тариф</td>#}
+                    {#<td>Стоимость месяца (руб.)</td>#}
+                    {#<td>Количество оплаченных месяцев</td>#}
+                    {#<td>Оплачено (руб.)</td>#}
+                    {#<td>Скидка</td>#}
+                    {#<td>Статус оплаты</td>#}
+                {#</tr>#}
+                {#{% for payment in payments %}#}
+                    {#<tr>#}
+                        {#<td>{{ payment.id }}</td>#}
+                        {#<td>{{ payment.tariff.name }}</td>#}
+                        {#<td>{{ payment.tariff.price|number_format(0, '', ' ') }}</td>#}
+                        {#<td>{{ payment.numberMonth }}</td>#}
+                        {#<td>#}
+                            {#{{ payment.amount|number_format(0, '', ' ') }}#}
+                        {#</td>#}
+                        {#<td>{{ payment.discountNumber ? payment.discountNumber ~ '%' : 'нет' }}</td>#}
+                        {#<td>#}
+                            {#{{ payment.statusText }}#}
+                            {#{% if payment.status == "NEW" or payment.status == "" %}#}
+                                {#<a class="btn-payment" href="{{ path('frontend_client_payment_checkout_renewal', {id: payment.id}) }}">Оплатить</a>#}
+                            {#{% endif %}#}
+                        {#</td>#}
+                    {#</tr>#}
+                {#{% endfor %}#}
+            {#</table>#}
+        </div>
+    </div>
+
+    {{ render(url('frontend_feedback', {ajax: true})) }}
+    {{ render(url('frontend_client_change_password')) }}
+{% endblock %}

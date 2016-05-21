@@ -1,0 +1,50 @@
+{% extends 'SiteMainBundle:Backend:layout.html.twig' %}
+
+{% block content -%}
+    <h1>{{ 'backend.questions.h1_show'|trans({}, 'menu') }}</h1>
+
+    {{ form(delete_form) }}
+
+    <table class="record_properties table table-striped table-bordered">
+        <tbody>
+        <tr>
+            <th>{{ 'backend.questions.title'|trans({}, 'menu') }}</th>
+            <td>{{ entity.title }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.questions.metatitle'|trans({}, 'menu') }}</th>
+            <td>{{ entity.metaTitle }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.questions.metadescription'|trans({}, 'menu') }}</th>
+            <td>{{ entity.metaDescription }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.questions.metakeywords'|trans({}, 'menu') }}</th>
+            <td>{{ entity.metaKeywords }}</td>
+        </tr>
+        <tr>
+            <th>{{ 'backend.questions.position'|trans({}, 'menu') }}</th>
+            <td>{{ entity.position }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <a href="{{ path('backend_questions_index') }}">
+                {{ 'backend.questions.back_to_list'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_questions_edit', { 'id': entity.id }) }}">
+                {{ 'backend.edit'|trans({}, 'menu') }}
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('backend_questions_new') }}">
+                {{ 'backend.create'|trans({}, 'menu') }}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

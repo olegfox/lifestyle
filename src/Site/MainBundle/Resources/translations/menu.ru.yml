@@ -1,0 +1,148 @@
+backend:
+    background:
+        h1_show: Фон на главной
+        h1_list: Список фоновых изображений
+        h1_edit: Редактирование фонового изображения
+        h1_create: Добавление фонового изображения
+        back_to_list: Назад к списку фоновых изображений
+        empty_list: Нет фоновых изображений
+        main: Отображать на главной?
+        main_yes: Да
+        main_no: Нет
+        img: Изображение
+        not_found: Фоновое изображение не существует
+    page:
+        h1_show: Страница
+        h1_list: Список страниц
+        h1_edit: Редактирование страницы
+        h1_create: Создание страницы
+        back_to_list: Назад к списку страниц
+        empty_list: Нет страниц
+        title: Заголовок
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
+        text: Текст страницы
+        position: Позиция в меню
+        parent: Родитель
+        background: Фон
+        not_found: Страница не существует
+        validation:
+            title: Вы не ввели заголовок!
+            position: Вы не ввели позицию!
+            position_integer: Вы некорректно ввели позицию!
+            position_min: Позициия не может быть меньше нуля!
+    questions:
+        h1_show: Вопрос
+        h1_list: Список вопросов
+        h1_edit: Редактирование вопроса
+        h1_create: Создание вопроса
+        back_to_list: Назад к списку вопросов
+        empty_list: Нет вопросов
+        title: Вопрос
+        metatitle: Мета-заголовок
+        metadescription: Мета-описание
+        metakeywords: Ключевые слова
+        answer: Ответ
+        position: Позиция
+        not_found: Вопрос не существует
+        validation:
+            title: Вы не ввели вопрос!
+            position: Вы не ввели позицию!
+            position_integer: Вы некорректно ввели позицию!
+            position_min: Позициия не может быть меньше нуля!
+    tariff:
+        h1_show: Тариф
+        h1_list: Список тарифов
+        h1_edit: Редактирование тарифа
+        h1_create: Добавление тарифа
+        back_to_list: Назад к списку тарифов
+        empty_list: Нет тарифов
+        name: Название
+        description: Описание
+        price: Цена
+        disable: В разработке?
+        not_found: Тариф не существует
+    client:
+        h1_show: Клиент
+        h1_list: Список клиентов
+        h1_edit: Редактирование клиента
+        h1_create: Добавление клиента
+        back_to_list: Назад к списку клиентов
+        empty_list: Нет клиентов
+        username: Имя
+        password: Придумайте пароль
+        password_repeat: Повторите пароль
+        email: Электронная почта
+        phone: Телефон для связи
+        is_active: Заблокирован
+        is_payment: Оплачено
+        created: Дата регистрации
+        not_found: Клиент не существует
+    media:
+        h1_show: Медиа
+        h1_list: Список медиа
+        h1_edit: Редактирование медиа
+        h1_create: Создание медиа
+        back_to_list: Назад к списку медиа
+        empty_list: Нет медиа
+        title: Заголовок
+        description: Краткое описание
+        preview: Превью картинка
+        text: Текст
+        metaTitle: Мета-заголовок
+        metaDescription: Мета-описание
+        metaKeywords: Ключевые слова
+        video: Видео (Youtube, Vimeo)
+        photos: Фото-галерея
+        created: Дата создания
+        video_not_found: Нет видео
+        not_found: Медиа не существует
+        validation:
+            title: Вы не ввели заголовок!
+    actions: Действия
+    show: показать
+    edit: редактировать
+    update: сохранить
+    create: создать
+    delete: удалить
+
+frontend:
+    register: Перейти к оплате
+    payment:
+      tariff: Тариф
+      numberMonth: Количество месяцев
+      amount: Количество денег
+      next: Далее
+      back: Назад
+      send: Оплатить
+      error: Ошибка!
+    feedback:
+        placeholder:
+            name: Имя
+            phone: Телефон
+            email: Электронная почта
+            theme: Тема письма
+            message: Сообщение
+    question_form:
+        placeholder:
+            name: Имя
+            email: Электронная почта
+            question: Вопрос
+        button_question: Задать вопрос
+        button_question_send: Отправить
+    change_password_form:
+        current_password: Текущий пароль
+        new_password: Новый пароль
+        new_password_confirmation: Подтвердите пароль
+        password_mismatch: Введенные пароли не совпадают
+    forget_password:
+        placeholder:
+            email: email
+    reset_password_form:
+        current_password: Текущий пароль
+        new_password: Новый пароль
+        new_password_confirmation: Подтвердите пароль
+        password_mismatch: Введенные пароли не совпадают
+
+"Invalid credentials.": Неверные имя пользователя или пароль

@@ -1,0 +1,29 @@
+{% extends 'SiteMainBundle:Frontend/Auth:dialog.html.twig' %}
+
+{% block id %}register-dialog{% endblock %}
+
+{% block head %}Введите контактные данные{% endblock %}
+
+{% block content %}
+    <div class="wrap-form">
+        <form action=""></form>
+        <div class="form">
+            {{ form_start(form, { 'style': 'horizontal', attr: {novalidate: 'novalidate'} }) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.password) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.phone) }}
+            <div class="hint">
+                * Услуги предоставляются только жителям РФ. Ваш телефон должен начинаться с префикса +7
+            </div>
+            {{ form_widget(form.submit) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+    {#<div class="wrap-contract">#}
+        {#<div class="contract">#}
+            {#<h2>ДОГОВОР ОФЕРТА</h2>#}
+            {#{{ page.text|raw }}#}
+        {#</div>#}
+    {#</div>#}
+{% endblock %}

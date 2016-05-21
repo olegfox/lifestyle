@@ -1,0 +1,89 @@
+# src/Site/Bundle/MainBundle/Resources/config/validation.yml
+Site\MainBundle\Entity\Client:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: username
+            message: "Извините, это имя пользователя уже занято."
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: email
+            message: "Извините, данный email уже зарегистрирован."
+    properties:
+        username:
+            - NotBlank:
+                message: "Вы не ввели имя пользователя"
+        password:
+            - NotBlank:
+                message: "Вы не ввели пароль"
+        phone:
+            - NotBlank:
+                message: "Вы не ввели телефон"
+        email:
+            - NotBlank:
+                message: "Вы не ввели email"
+            - Email:
+                message: "Вы неверно заполнили email"
+
+Site\MainBundle\Entity\Media:
+    properties:
+        title:
+            - NotBlank:
+                message: "backend.media.validation.title"
+
+Site\MainBundle\Form\Feedback:
+    properties:
+        name:
+            - NotBlank:
+                message: "Вы не ввели имя"
+        phone:
+            - NotBlank:
+                message: "Вы не ввели телефон"
+        email:
+            - NotBlank:
+                message: "Вы не ввели email"
+            - Email:
+                message: "Вы неверно заполнили email"
+        message:
+            - NotBlank:
+                message: "Вы не ввели сообщение"
+
+Site\MainBundle\Form\QuestionForm:
+    properties:
+        name:
+            - NotBlank:
+                message: "Вы не ввели имя"
+        email:
+            - NotBlank:
+                message: "Вы не ввели email"
+            - Email:
+                message: "Вы неверно заполнили email"
+        question:
+            - NotBlank:
+                message: "Вы не ввели вопрос"
+
+Site\MainBundle\Entity\ChangePassword:
+    properties:
+        new:
+            - NotBlank:
+                message: "Пароль не может быть пустым"
+            - Length:
+                min: 2
+                max: 4096
+                minMessage: "Пароль не может быть меньше 2 символов и больше 4096 символов"
+
+Site\MainBundle\Entity\ForgetPassword:
+    properties:
+        email:
+            - NotBlank:
+                message: "Вы не ввели email"
+            - Email:
+                message: "Вы неверно заполнили email"
+
+Site\MainBundle\Entity\ResetPassword:
+    properties:
+        password:
+            - NotBlank:
+                message: "Пароль не может быть пустым"
+            - Length:
+                min: 2
+                max: 4096
+                minMessage: "Пароль не может быть меньше 2 символов и больше 4096 символов"

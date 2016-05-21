@@ -1,0 +1,592 @@
+<?php
+
+namespace Site\MainBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * Payment
+ *
+ * @ORM\Table(name="payments")
+ * @ORM\Entity
+ */
+class Payment implements PaymentInterface
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tariff", inversedBy="payment", cascade={"persist"})
+     * @ORM\JoinColumn(name="tariff_id", referencedColumnName="id")
+     **/
+    protected $tariff;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Client", inversedBy="client")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+     **/
+    protected $client;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="amount", type="integer", nullable=false)
+     */
+    protected $amount;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="number_month", type="integer", nullable=false)
+     */
+    protected $numberMonth;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated", type="datetime")
+     */
+    protected $updated;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="discount", type="integer", nullable=false)
+     */
+    protected $discount = 0;
+
+    /**
+     * PaymentId
+     *
+     * Уникальный идентификатор транзакции в системе Банка.
+     *
+     * @var integer
+     *
+     * @ORM\Column(name="payment_id", type="integer", nullable=true)
+     */
+    protected $paymentId;
+
+    /**
+     * Success
+     *
+     * Успешность операции
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="success", type="boolean", nullable=true)
+     */
+    protected $success = false;
+
+    /**
+     * Status
+     *
+     * Статус транзакции.
+     *
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=20, nullable=true)
+     */
+    protected $status;
+
+    /**
+     * ErrorCode
+     *
+     * Код ошибки, «0» если успешно.
+     *
+     * @var string
+     *
+     * @ORM\Column(name="error_code", type="string", length=20, nullable=true)
+     */
+    protected $errorCode;
+
+    /**
+     * RebillId
+     *
+     * В случае если при вызове метода Init платеж был помечен как рекуррентный, то после подтверждения оплаты
+     * в этот параметр будет передан идентификатор рекуррентного платежа.
+     *
+     * @var integer
+     *
+     * @ORM\Column(name="rebill_id", type="integer", nullable=true)
+     */
+    protected $rebillId;
+
+    /**
+     * CardId
+     *
+     * В случае если разрешена автоматическая привязка карт Покупателей к терминалу и при вызове метода
+     * Init был передан параметр CustomerKey, в этот параметр будет передан идентификатор привязанной карты.
+     *
+     * @var integer
+     *
+     * @ORM\Column(name="card_id", type="integer", nullable=true)
+     */
+    protected $cardId;
+
+    /**
+     * Pan
+     *
+     * Маскированный номер карты.
+     *
+     * @var string
+     *
+     * @ORM\Column(name="pan", type="string", length=20, nullable=true)
+     */
+    protected $pan;
+
+    /**
+     * Token
+     *
+     * Подпись запроса. Формируется по такому же принципу, как и в случае запросов в банк.
+     *
+     * @var string
+     *
+     * @ORM\Column(name="token", type="string", nullable=true)
+     */
+    protected $token;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set amount
+     *
+     * @param integer $amount
+     * @return Payment
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Get amount
+     *
+     * @return integer 
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     * @return Payment
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime 
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     * @return Payment
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+
+        return $this;
+    }
+
+    /**
+     * Get updated
+     *
+     * @return \DateTime 
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Set tariff
+     *
+     * @param \Site\MainBundle\Entity\Tariff $tariff
+     * @return Payment
+     */
+    public function setTariff(\Site\MainBundle\Entity\Tariff $tariff = null)
+    {
+        $this->tariff = $tariff;
+
+        return $this;
+    }
+
+    /**
+     * Get tariff
+     *
+     * @return \Site\MainBundle\Entity\Tariff 
+     */
+    public function getTariff()
+    {
+        return $this->tariff;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \Site\MainBundle\Entity\Client $client
+     * @return Payment
+     */
+    public function setClient(\Site\MainBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \Site\MainBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Set numberMonth
+     *
+     * @param integer $numberMonth
+     * @return Payment
+     */
+    public function setNumberMonth($numberMonth)
+    {
+        $this->numberMonth = $numberMonth;
+
+        if($this->numberMonth >= 6){
+            $this->setDiscount($this::DISCOUNT_50);
+            $this->setAmount($this->numberMonth * ($this->getTariff()->getPrice() - $this->getTariff()->getPrice() * 0.5));
+        }elseif($this->numberMonth >= 3){
+            $this->setDiscount($this::DISCOUNT_25);
+            $this->setAmount($this->numberMonth * ($this->getTariff()->getPrice() - $this->getTariff()->getPrice() * 0.25));
+        }
+
+        $this->setAmount($this->numberMonth * $this->getTariff()->getPrice());
+
+        return $this;
+    }
+
+    /**
+     * Get numberMonth
+     *
+     * @return integer 
+     */
+    public function getNumberMonth()
+    {
+        return $this->numberMonth;
+    }
+
+    /**
+     * Set discount
+     *
+     * @param integer $discount
+     * @return Payment
+     */
+    public function setDiscount($discount)
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+    /**
+     * Get discount
+     *
+     * @return integer 
+     */
+    public function getDiscount()
+    {
+        return $this->discount;
+    }
+
+    public function getDiscountNumber()
+    {
+        switch($this->getDiscount()){
+            case $this::DISCOUNT_50 : {
+                return 50;
+            }break;
+            case $this::DISCOUNT_25 : {
+                return 25;
+            }break;
+            default : {
+                return 0;
+            }break;
+        }
+    }
+
+    public function getStatusText(){
+        switch($this->status){
+            case "NEW":{
+                return 'В ожидании';
+            }break;
+            case "CANCELED":{
+                return 'Отменен';
+            }break;
+            case "PREAUTHORIZING":{
+                return 'Проверка платежных данных';
+            }break;
+            case "FORMSHOWED":{
+                return 'В процессе оплаты';
+            }break;
+            case "AUTHORIZING":{
+                return 'Начало аутентификации';
+            }break;
+            case "3DS_CHECKING":{
+                return 'Начало аутентификации по протоколу 3-D Secure';
+            }break;
+            case "3DS_CHECKED":{
+                return 'Аутентификации по протоколу 3-D Secure завершена';
+            }break;
+            case "AUTHORIZED":{
+                return 'Средства заблокированы, но не списаны.';
+            }break;
+            case "REVERSING":{
+                return 'Начало отмены блокировки средств.';
+            }break;
+            case "REVERSED":{
+                return 'Денежные средства разблокированы.';
+            }break;
+            case "CONFIRMING":{
+                return 'Начало списания денежных средств.';
+            }break;
+            case "CONFIRMED":{
+                return 'Оплачено';
+            }break;
+            case "REFUNDING":{
+                return 'Начало возврата денежных средств.';
+            }break;
+            case "REFUNDED":{
+                return 'Произведен возврат денежных средств.';
+            }break;
+            case "REJECTED":{
+                return 'Платеж отклонен Банком.';
+            }break;
+            case "UNKNOWN":{
+                return 'Статус не определен.';
+            }break;
+        };
+    }
+
+    /**
+     * Set paymentId
+     *
+     * @param integer $paymentId
+     * @return Payment
+     */
+    public function setPaymentId($paymentId)
+    {
+        $this->paymentId = $paymentId;
+
+        return $this;
+    }
+
+    /**
+     * Get paymentId
+     *
+     * @return integer 
+     */
+    public function getPaymentId()
+    {
+        return $this->paymentId;
+    }
+
+    /**
+     * Set success
+     *
+     * @param boolean $success
+     * @return Payment
+     */
+    public function setSuccess($success)
+    {
+        $this->success = $success;
+
+        return $this;
+    }
+
+    /**
+     * Get success
+     *
+     * @return boolean 
+     */
+    public function getSuccess()
+    {
+        return $this->success;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     * @return Payment
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string 
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set errorCode
+     *
+     * @param string $errorCode
+     * @return Payment
+     */
+    public function setErrorCode($errorCode)
+    {
+        $this->errorCode = $errorCode;
+
+        return $this;
+    }
+
+    /**
+     * Get errorCode
+     *
+     * @return string 
+     */
+    public function getErrorCode()
+    {
+        return $this->errorCode;
+    }
+
+    /**
+     * Set rebillId
+     *
+     * @param integer $rebillId
+     * @return Payment
+     */
+    public function setRebillId($rebillId)
+    {
+        $this->rebillId = $rebillId;
+
+        return $this;
+    }
+
+    /**
+     * Get rebillId
+     *
+     * @return integer 
+     */
+    public function getRebillId()
+    {
+        return $this->rebillId;
+    }
+
+    /**
+     * Set cardId
+     *
+     * @param integer $cardId
+     * @return Payment
+     */
+    public function setCardId($cardId)
+    {
+        $this->cardId = $cardId;
+
+        return $this;
+    }
+
+    /**
+     * Get cardId
+     *
+     * @return integer 
+     */
+    public function getCardId()
+    {
+        return $this->cardId;
+    }
+
+    /**
+     * Set pan
+     *
+     * @param string $pan
+     * @return Payment
+     */
+    public function setPan($pan)
+    {
+        $this->pan = $pan;
+
+        return $this;
+    }
+
+    /**
+     * Get pan
+     *
+     * @return string 
+     */
+    public function getPan()
+    {
+        return $this->pan;
+    }
+
+    /**
+     * Set token
+     *
+     * @param string $token
+     * @return Payment
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * Get token
+     *
+     * @return string 
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+}

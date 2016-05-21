@@ -1,0 +1,7 @@
+frontend_questions_index:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Frontend/Questions:index" }
+
+frontend_questions_one:
+    path:     /{slug}
+    defaults: { _controller: "SiteMainBundle:Frontend/Questions:one" }

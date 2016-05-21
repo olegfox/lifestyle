@@ -1,0 +1,51 @@
+{% extends 'SiteMainBundle:Frontend/Auth:dialog.html.twig' %}
+
+{% block id %}checkout-dialog{% endblock %}
+
+{% block head %}Проверьте данные{% endblock %}
+
+
+{% block content %}
+    <div class="wrap-form">
+        <form action=""></form>
+        <div class="form payment-form completed-payment-form">
+            <table class="payments-table">
+                <tr>
+                    <td>Тариф</td>
+                    <td>Стоимость месяца (руб.)</td>
+                    <td>Количество оплачиваемых месяцев</td>
+                </tr>
+                <tr>
+                    <td>
+                        {{ payment.tariff.name }}
+                    </td>
+                    <td>
+                        {{ payment.tariff.price|number_format(0, '', ' ') }}
+                    </td>
+                    <td>
+                        {{ payment.numberMonth }}
+                    </td>
+                </tr>
+                {% if payment.discount > 0 %}
+                    <tr>
+                        <td colspan="3">Скидка:</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">{{ payment.discountNumber }}%</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <td colspan="3">Итого:</td>
+                </tr>
+                <tr>
+                    <td colspan="3">{{ payment.amount|number_format(0, '', ' ') }}</td>
+                </tr>
+            </table>
+
+            <form action="{{ path('frontend_client_payment_checkout') }}" method="post">
+                {#<a href="{{ path('frontend_client_payment') }}" class="btn">{{ "frontend.payment.back"|trans({}, 'menu') }}</a>#}
+                <button class="btn" type="submit">{{ "frontend.payment.send"|trans({}, 'menu') }}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

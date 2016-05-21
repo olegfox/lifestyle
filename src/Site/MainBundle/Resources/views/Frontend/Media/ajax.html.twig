@@ -1,0 +1,7 @@
+{% from 'SiteMainBundle:Frontend/Media:macros.html.twig' import grid %}
+
+{{ grid(allMedia) }}
+
+{% if mediaLength == 15 %}
+    <a class="indexByTaxonAjax" href="{{ path('frontend_media_ajax', {slug: lastSlug}) }}"></a>
+{% endif %}

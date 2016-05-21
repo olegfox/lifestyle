@@ -1,0 +1,27 @@
+backend_dashboard:
+    path:     /
+    defaults: { _controller: "SiteMainBundle:Backend/Dashboard:index" }
+
+backend_tariff:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/tariff.yml"
+    prefix:   /tariff
+
+backend_client:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/client.yml"
+    prefix:   /clients
+
+backend_media:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/media.yml"
+    prefix: /media
+
+backend_page:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/page.yml"
+    prefix: /page
+
+backend_questions:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/questions.yml"
+    prefix: /questions
+
+backend_background:
+    resource: "@SiteMainBundle/Resources/config/routing/backend/background.yml"
+    prefix: /background

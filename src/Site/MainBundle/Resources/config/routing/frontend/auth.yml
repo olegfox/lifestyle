@@ -1,0 +1,64 @@
+frontend_client_login:
+    path:     /login
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:login" }
+
+frontend_client_login_check:
+    path:     /login_check
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:loginCheck" }
+
+frontend_client_logout:
+    path:     /logout
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:logout" }
+
+frontend_client_room:
+    path:     /room
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:room" }
+
+#frontend_client_room_change_tariff:
+#    path:     /room/change/tariff
+#    defaults: { _controller: "SiteMainBundle:Frontend/Payment:changeTariff" }
+
+frontend_client_register:
+    path:     /register
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:register" }
+
+frontend_client_reset_password:
+    path:     /reset-password
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:resetPassword" }
+
+frontend_client_forget_password:
+    path:     /forget-password
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:forgetPassword" }
+
+frontend_client_change_password:
+    path:     /change-password
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:changePassword" }
+
+frontend_client_update_field:
+    path:     /updatefield
+    defaults: { _controller: "SiteMainBundle:Frontend/Auth:updateField" }
+    methods:  [POST]
+
+frontend_client_payment:
+    path:     /payment
+    defaults: { _controller: "SiteMainBundle:Frontend/Payment:payment" }
+
+frontend_client_payment_checkout:
+    path:     /payment/checkout
+    defaults: { _controller: "SiteMainBundle:Frontend/Payment:checkout" }
+
+frontend_client_payment_checkout_renewal:
+    path:     /payment/checkout/renewal/{id}
+    defaults: { _controller: "SiteMainBundle:Frontend/Payment:checkoutRenewal" }
+
+frontend_client_payment_cancel:
+    path:     /payment/cancel/{id}
+    defaults: { _controller: "SiteMainBundle:Frontend/Payment:cancel" }
+
+frontend_client_payment_completed:
+    path:     /payment/completed
+    defaults: { _controller: "SiteMainBundle:Frontend/Payment:completed" }
+
+frontend_client_payment_failed:
+    path:     /payment/failed
+    defaults: { _controller: "SiteMainBundle:Frontend/Payment:failed" }
