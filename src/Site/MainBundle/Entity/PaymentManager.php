@@ -126,7 +126,7 @@ class PaymentManager
                         ->setFrom(array($this->container->getParameter('email_from') => "Life-style-manager (Новая оплата)"))
                         ->setTo($this->container->getParameter('emails_admin'))
                         ->setBody(
-                            $this->renderView(
+                            $this->controller->renderView(
                                 'SiteMainBundle:Frontend/Feedback:newPaymentMessage.html.twig',
                                 array(
                                     'form' => $client,
