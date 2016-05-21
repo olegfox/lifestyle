@@ -116,7 +116,7 @@ class PaymentManager
                 $payment->setPan($request->get('Pan'));
                 $payment->setToken($request->get('Token'));
 
-                if($request->get('Status') == "CONFIRMED"){
+                if($request->get('Status') == "CONFIRMED" || $request->get('Status') == "AUTHORIZED"){
                     $client = $payment->getClient();
                     $client->setIsPayment(true);
 
