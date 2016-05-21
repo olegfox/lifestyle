@@ -136,7 +136,7 @@ class PaymentManager
                             , 'text/html'
                         );
 
-                    $this->get('mailer')->send($swift);
+                    $this->controller->get('mailer')->send($swift);
 
                     if(is_null($client->getEnded())){
                         $end = new \DateTime();
