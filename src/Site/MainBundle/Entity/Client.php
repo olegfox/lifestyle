@@ -83,12 +83,12 @@ class Client implements UserInterface, \Serializable
 //     */
 //    protected $key;
 //
-//    /**
-//     * @var \DateTime()
-//     *
-//     * @ORM\Column(name="key_date", type="datetime", nullable=true)
-//     */
-//    protected $keyDate;
+    /**
+     * @var \DateTime()
+     *
+     * @ORM\Column(name="key_date", type="datetime", nullable=true)
+     */
+    protected $keyDate;
 
     public function __construct()
     {
@@ -430,26 +430,26 @@ class Client implements UserInterface, \Serializable
 //        return $this->key;
 //    }
 //
-//    /**
-//     * Set keyDate
-//     *
-//     * @param \DateTime $keyDate
-//     * @return Client
-//     */
-//    public function setKeyDate($keyDate)
-//    {
-//        $this->keyDate = $keyDate;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get keyDate
-//     *
-//     * @return \DateTime
-//     */
-//    public function getKeyDate()
-//    {
-//        return $this->keyDate;
-//    }
+    /**
+     * Set keyDate
+     *
+     * @param \DateTime $keyDate
+     * @return Client
+     */
+    public function setKeyDate($keyDate)
+    {
+        $this->keyDate = $keyDate;
+
+        return $this;
+    }
+
+    /**
+     * Get keyDate
+     *
+     * @return \DateTime
+     */
+    public function getKeyDate()
+    {
+        return $this->keyDate;
+    }
 }
