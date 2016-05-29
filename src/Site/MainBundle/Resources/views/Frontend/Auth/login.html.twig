@@ -9,7 +9,7 @@
     <div class="wrap-form">
         <form action=""></form>
         <div class="form form-login">
-            <form action="{{ path('frontend_client_login_check') }}" method="post" class="form-horizontal" data-redirect="{{ path('frontend_client_room') }}">
+            <form action="{{ path('frontend_client_login_check') }}?xhr=true" method="post" class="form-horizontal" data-redirect="{{ path('frontend_client_room') }}">
                 <div class="form-group">
                     <div class="col-lg-10">
                         <input type="text" id="username" name="_username" placeholder="email" value="{{ last_username }}" />
