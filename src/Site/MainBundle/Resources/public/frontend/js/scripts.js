@@ -285,7 +285,7 @@ $(document).ready(function () {
    /* end Auth Room actions */
 
     /* Validate and Submit Login form */
-    $('#login-dialog form').submit(function(){
+    $('#login-dialog form.form-horizontal').submit(function(){
 
         var $form = $(this);
 
